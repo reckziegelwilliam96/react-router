@@ -1,23 +1,22 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Home from './Home';
-import Nav from './Nav';
+import DogList from './DogList';
+import DogDetails from './DogDetails';
 import './App.css';
 
-function App() {
+function App({dogs}) {
   return (
     <div className="App">
       <Switch>
-        <div className="Dog-Home">
-          <Route path="/dogs">
-            <Home dogs={App.defaultProps}/>
+
+          <Route exact path="/dogs">
+            <DogList dogs={dogs}/>
           </Route>
-        </div>
-        <div className="Dog-Nav">
+
           <Route path="/dogs/:name">
-            <Nav dog={App.defaultProps.name}/>
+            <DogDetails dogs={dogs}/>
           </Route>
-        </div>
+
         <Redirect to="/dogs" />
       </Switch>
     </div>
@@ -29,7 +28,7 @@ App.defaultProps = {
     {
       name: "Whiskey",
       age: 5,
-      src: whiskey,
+      src: './whiskey.jpg',
       facts: [
         "Whiskey loves eating popcorn.",
         "Whiskey is a terrible guard dog.",
@@ -39,7 +38,7 @@ App.defaultProps = {
     {
       name: "Duke",
       age: 3,
-      src: duke,
+      src: './duke.jpg',
       facts: [
         "Duke believes that ball is life.",
         "Duke likes snow.",
@@ -49,7 +48,7 @@ App.defaultProps = {
     {
       name: "Perry",
       age: 4,
-      src: perry,
+      src: './perry.jpg',
       facts: [
         "Perry loves all humans.",
         "Perry demolishes all snacks.",
@@ -59,7 +58,7 @@ App.defaultProps = {
     {
       name: "Tubby",
       age: 4,
-      src: tubby,
+      src: './tubby.jpg',
       facts: [
         "Tubby is really stupid.",
         "Tubby does not like walks.",
